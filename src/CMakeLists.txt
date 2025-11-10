@@ -90,9 +90,6 @@ add_subdirectory(memory_virtual_class)
 add_subdirectory(memory_virtual_function)
 add_subdirectory(memory_pool_one)
 add_subdirectory(memory_XFile_SSL)
-if(NOT WIN32)
-add_subdirectory(memory_nginx_pool_test)
-endif()
 
 
 
