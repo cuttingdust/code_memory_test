@@ -1,16 +1,36 @@
 ﻿#include <iostream>
 
 
+class FClass
+{
+public:
+    FClass()
+    {
+        std::cout << __FUNCTION__ << std::endl;
+    }
+    FClass(const FClass& other)
+    {
+        std::cout << __FUNCTION__ << std::endl;
+    }
+};
+
+
 int main(int argc, char* argv[])
 {
+    {
+        FClass ObjA;
+        FClass b(
+                FClass()); /// 这句没有用   warning C4930: “FClass b(FClass (__cdecl *)(void))”: 未调用原型函数(是否是有意用变量定义的?)
+    }
+
     {
         std::cout << "101 pointer" << std::endl;
         /// 指针类型 p1变量存在栈中
         /// new int 堆中
         int* p1 = new int;
         ///  *间接符号
-        *p1            = 101;
-        int        i   = 10;
+        *p1      = 101;
+        int  i   = 10;
         int& ref = i; /// 创建对 x 的 const 引用
         std::cout << "i = " << i << std::endl;
         int* p2 = &i;
